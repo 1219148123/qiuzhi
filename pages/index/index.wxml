@@ -1,20 +1,48 @@
-<!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px">
+    <view class="search-form round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="搜索" confirm-type="search" bindinput="searchIcon"></input>
+    </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="display">
+    <view class="lunbo">
+      <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" style="height:320rpx">
+        <swiper-item wx:for="{{swiperList}}" wx:key >
+          <image src="{{item.url}}" mode="widthFix" wx:if="{{item.type=='image'}}"></image>
+          <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+        </swiper-item>
+      </swiper>
+    </view>
+    <view class="function">
+      <navigator class="fun-box" url="/pages/applyForJob/applyForJob" hover-class="none">
+        <image src="../../images/display-qiuzhi.png" class="fun-img" ></image>
+        <text class="fun-font">我要求职</text>
+      </navigator>
+      <navigator class="fun-box" url="/pages/recruitment/recruitment" hover-class="none">
+        <image src="../../images/display-zhaoren.png" class="fun-img"></image>
+        <text class="fun-font">我要招人</text>
+      </navigator>
+      <navigator class="fun-box" url="/pages/usedCar/usedCar" hover-class="none">
+        <image src="../../images/display-shiwuzhaoling.png"class="fun-img" ></image>
+        <text class="fun-font">二手车</text>
+      </navigator>
+      <navigator class="fun-box" url="/pages/applyForJob/applyForJob" hover-class="none">
+        <image src="../../images/display-xunrenqishi.png" class="fun-img"></image>
+        <text class="fun-font">二手房</text>
+      </navigator>
+    </view>
   </view>
-</view>
-
-<view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px">
-  <view class="search-form round">
-    <text class="cuIcon-search"></text>
-    <input type="text" placeholder="搜索icon" confirm-type="search" bindinput="searchIcon"></input>
+  <view class="panel">
+    <view class="header solids-bottom">
+      <text>职位列表</text>
+    </view>
+    <view class="content ">
+      <block wx:for="{{jobList}}">
+        <x-job-card job="{{item}}" data-job="{{item.id}}" bindtap="goJobContent"/>
+      </block>
+    </view>
   </view>
+  <view class="div-bottom">———————  到底啦~~~  ——————</view>
+  
 </view>

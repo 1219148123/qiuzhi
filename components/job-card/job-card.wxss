@@ -1,0 +1,36 @@
+.job-card{
+  background-color: #fff;
+  height: 300rpx;
+  padding:35rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 4rpx solid rgb(228, 227, 227);
+}
+.job-name{
+  font-size: 38rpx;
+  font-weight: 700;
+}
+.job-ad{
+  width: 70rpx;
+  height: 40rpx;
+  background-color: #FC9A4E;
+  border-radius: 5rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 24rpx;
+  color: #fff;
+}
+.job-font{
+  margin: 15rpx 0;
+  color: rgb(145, 143, 143);
+}
+.job-salary{
+  color: #FC9A4E;
+  font-size: 34rpx;
+  font-weight: 500;
+}
+.job-way{
+  margin-left: 38rpx;
+}

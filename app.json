@@ -1,14 +1,56 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/job/job",
+    "pages/talent/talent",
+    "pages/my/my",
+    "pages/test/test",
+    "pages/logs/logs",
+    "pages/jobDetail/jobDetail",
+    "pages/applyForJob/applyForJob",
+    "pages/recruitment/recruitment",
+    "pages/usedCar/usedCar"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#FC9A4E",
+    "borderStyle": "white",
+    "backgroundColor": "#f9f9f9",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index-A.png"
+      },
+      {
+        "pagePath": "pages/job/job",
+        "text": "兼职",
+        "iconPath": "images/job.png",
+        "selectedIconPath": "images/job-A.png"
+      },
+      {
+        "pagePath": "pages/talent/talent",
+        "text": "人才市场",
+        "iconPath": "images/talent.png",
+        "selectedIconPath": "images/talent-A.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my-A.png"
+      }
+  ]
   },
-  "style": "v2",
+  "window":{
+    "navigationBarBackgroundColor": "#39b54a",
+    "navigationBarTitleText": "Color UI",
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
   "sitemapLocation": "sitemap.json"
 }

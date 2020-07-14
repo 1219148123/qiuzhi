@@ -1,0 +1,88 @@
+<view class="wraper">
+  <view class="mask">
+    <view class="back" bindtap="BackPage">
+      <view class="cuIcon-back lg text-white"></view>
+      <text class="back-text">返回</text>
+    </view>
+    <view class="job-desc">
+      <view class="job-title">便利店配送170一天就近分配</view>
+      <view class="job-salary">170/天</view>
+      <view class="job-address">昌平|送餐员</view>
+    </view>
+  </view>
+  <view class="content">
+    <view class="cu-bar bg-white">
+      <view class="action sub-title">
+        <text class="text-xl text-bold text-orange">工作详情</text>
+        <text class="text-ABC text-orange">content</text>
+      </view>
+    </view>
+    <!-- <view class="panel">
+          工资待遇:无责150/天+派单提成(1单1- -2元),每天综合到手工资160-170,公司免费提供车辆,无需押金
+          岗位要求:18- -40，会骑电动车，会熟练操作智能手机,服从管理,有服务安全意识。
+          工作时间:1200- -21:00(中间休息一小时)固定班次上六休一从现在起至少工作到2月8号。
+          工作内容:对顾客在app上下单的酒水饮料进行装车并骑车安全的把商品配送到顾客手里。
+          工资结算:每个月15号结算上个月肛资(统- -中国农业银行卡)
+          工作地点:北京五环内就近分配
+    </view> -->
+  </view> 
+</view>
+  <!-- <view class='footer'>
+    <i class="iconfont icon-zixun"></i>
+    <view class="zixun" >获取咨询方式</view> 
+  </view> -->
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class='action'>
+    <text class='cuIcon-titles text-orange '></text> 工作描述
+  </view>
+</view>
+<view class="cu-card article no-card">
+  <view class="cu-item shadow">
+    <view class="cell-item margin-top">
+      <text class="tabel">工作内容:</text>
+      <text>墨刀企业版是在家远程办公的好帮手,更是一款专业、可靠、简洁、易懂的在线产品原型工具与产品设计团队协作平台,能高效、轻松的解决团队成员远程办公,高效协作编辑</text> 
+    </view>
+    <view class="cell-item margin-top">
+      <text class="tabel">岗位要求:</text>
+      <text>墨刀从个人到企业/团队,从原型到交互到标注,满足不同规模项目各阶段需求,项目管理、成员管理、数据统计等炫酷功能等您来体验 ,还会提供更多专属技术支持、专属客户</text>
+    </view>
+    <view class="cell-item margin-top">
+      <text class="tabel">工作薪资:</text>
+      <text>150元/天</text>
+    </view>
+  </view>
+</view>
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class='action'>
+    <text class='cuIcon-titles text-orange '></text> 联系方式
+  </view>
+</view>
+<view class="cu-card article no-card">
+  <view class="cu-item shadow">
+    <view class="cell-item margin-top">
+      <text class="tabel">邮箱地址:</text>
+      <text>123465@qq.com</text> 
+    </view>
+    <view class="cell-item margin-top">
+      <text class="tabel">电话号码:</text>
+      <text>13248513254</text>
+    </view>
+  </view>
+</view>
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class='action'>
+    <text class='cuIcon-titles text-orange '></text> 相关信息
+  </view>
+</view>
+<view class="cu-card article no-card">
+  <view class="cu-item shadow">
+    <view class="cell-item margin-top">
+      <text class="tabel">工作地址:</text>
+      <text>123465@qq.com</text> 
+    </view>
+    <view class="cell-item margin-top">
+      <text class="tabel">工作时间:</text>
+      <text>13248513254</text>
+    </view>
+  </view>
+</view>
