@@ -1,65 +1,19 @@
 const app = getApp();
+const req=require('../../utils/requestAjax.js')
 Page({
   data: {
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     index: null,
     picker: ['货车', '轿车', '客车', '电动车', '摩托车'],
-    multiArray: [
-      ['无脊柱动物', '脊柱动物'],
-      ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物'],
-      ['猪肉绦虫', '吸血虫']
-    ],
     imgList: [],
-    objectMultiArray: [
-      [{
-          id: 0,
-          name: '无脊柱动物'
-        },
-        {
-          id: 1,
-          name: '脊柱动物'
-        }
-      ],
-      [{
-          id: 0,
-          name: '扁性动物'
-        },
-        {
-          id: 1,
-          name: '线形动物'
-        },
-        {
-          id: 2,
-          name: '环节动物'
-        },
-        {
-          id: 3,
-          name: '软体动物'
-        },
-        {
-          id: 3,
-          name: '节肢动物'
-        }
-      ],
-      [{
-          id: 0,
-          name: '猪肉绦虫'
-        },
-        {
-          id: 1,
-          name: '吸血虫'
-        }
-      ]
-    ],
-    multiIndex: [0, 0, 0],
-    time: '12:01',
-    date: '2018-12-25',
-    region: ['广东省', '广州市', '海珠区'],
     imgList: [],
     modalName: null,
     textareaAValue: '',
-    textareaBValue: ''
+    textareaBValue: '',
+    warn: "",
+    errorMessage:"",
+    isSubmit: false,
   },
   PickerChange(e) {
     console.log(e);
@@ -71,67 +25,6 @@ Page({
     this.setData({
       multiIndex: e.detail.value
     })
-  },
-  MultiColumnChange(e) {
-    let data = {
-      multiArray: this.data.multiArray,
-      multiIndex: this.data.multiIndex
-    };
-    data.multiIndex[e.detail.column] = e.detail.value;
-    switch (e.detail.column) {
-      case 0:
-        switch (data.multiIndex[0]) {
-          case 0:
-            data.multiArray[1] = ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物'];
-            data.multiArray[2] = ['猪肉绦虫', '吸血虫'];
-            break;
-          case 1:
-            data.multiArray[1] = ['鱼', '两栖动物', '爬行动物'];
-            data.multiArray[2] = ['鲫鱼', '带鱼'];
-            break;
-        }
-        data.multiIndex[1] = 0;
-        data.multiIndex[2] = 0;
-        break;
-      case 1:
-        switch (data.multiIndex[0]) {
-          case 0:
-            switch (data.multiIndex[1]) {
-              case 0:
-                data.multiArray[2] = ['猪肉绦虫', '吸血虫'];
-                break;
-              case 1:
-                data.multiArray[2] = ['蛔虫'];
-                break;
-              case 2:
-                data.multiArray[2] = ['蚂蚁', '蚂蟥'];
-                break;
-              case 3:
-                data.multiArray[2] = ['河蚌', '蜗牛', '蛞蝓'];
-                break;
-              case 4:
-                data.multiArray[2] = ['昆虫', '甲壳动物', '蛛形动物', '多足动物'];
-                break;
-            }
-            break;
-          case 1:
-            switch (data.multiIndex[1]) {
-              case 0:
-                data.multiArray[2] = ['鲫鱼', '带鱼'];
-                break;
-              case 1:
-                data.multiArray[2] = ['青蛙', '娃娃鱼'];
-                break;
-              case 2:
-                data.multiArray[2] = ['蜥蜴', '龟', '壁虎'];
-                break;
-            }
-            break;
-        }
-        data.multiIndex[2] = 0;
-        break;
-    }
-    this.setData(data);
   },
   TimeChange(e) {
     this.setData({
@@ -196,6 +89,104 @@ Page({
   textareaBInput(e) {
     this.setData({
       textareaBValue: e.detail.value
+    })
+  },
+  formSubmit: function (e) {
+    console.log('form发生了submit事件，携带数据为：', e.detail.value);
+    let {carKilometre,carImg,carNowPrice,carType,carPeople,carPhone,carOriginalPrice} = e.detail.value;
+    if (!carKilometre) {
+      this.setData({
+       warn: "车辆描述为空！",
+       isSubmit: true,
+       errorModal:true,
+       errorMessage:"车辆描述不能为空！"
+      })
+      return;
+    }
+    if (!carNowPrice) {
+      this.setData({
+       warn: "预期价位为空！",
+       isSubmit: true,
+       errorModal:true,
+       errorMessage:"预期价位不能为空！"
+      })
+      return;
+     }
+    
+    if (!carType) {
+      this.setData({
+       warn: "车辆类型为空！",
+       isSubmit: true,
+       errorModal:true,
+       errorMessage:"车辆类型不能为空！"
+      })
+      return;
+    }
+    if (!carPeople) {
+      this.setData({
+       warn: "联系人为空！",
+       isSubmit: true,
+       errorModal:true,
+       errorMessage:"联系人不能为空！"
+      })
+      return;
+    }
+    if (!carPhone||!(/^1[3456789]\d{9}$/.test(carPhone))) {
+      this.setData({
+       warn: "手机号码为空！",
+       isSubmit: true,
+       errorModal:true,
+       errorMessage:"手机号格式不对！"
+      })
+      return;
+    }
+    if (!carOriginalPrice) {
+      this.setData({
+       warn: "地址为空！",
+       isSubmit: true,
+       errorModal:true,
+       errorMessage:"提货地址不能为空！"
+      })
+      return;
+    }
+   
+    let data = {
+      carAge:"string",
+      carId: 0,
+      carImg,
+      carKilometre,
+      carNowPrice,
+      carOriginalPrice,
+      carPeople,
+      carPhone,
+      carStatus:1,
+      carTime:"",
+      carType,
+    }
+    data = JSON.stringify(data)
+    req.requestAjax('secondeHandCar/insert','POST',data,'正在加载',(res)=>{
+      console.log(res)//请求成功回调
+      // this.setData({
+      //   jobList:res
+      // })
+		},function(res){
+			console.log(res)//请求失败回调
+    })
+    
+   },
+   hideModal(e) {
+    this.setData({
+      errorModal: false
+    })
+  },
+  onShow(){
+    req.requestAjax('type/carType','Get','{}','正在加载',(res)=>{
+      console.log(res)//请求成功回调
+      this.setData({
+        picker:res
+      })
+		},function(res){
+			console.log(res)//请求失败回调
     })
   }
 })
