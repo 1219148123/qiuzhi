@@ -1,0 +1,20 @@
+.nav-font{
+  font-size: 30rpx;
+  font-weight: 600;
+}
+.header{
+  height: 90rpx;
+  /* margin-left: 30rpx; */
+}
+.title-style{
+  margin-bottom: 10rpx;
+  height: 45rpx;
+  width: 100rpx;
+  background-color: #FCA059;
+  color: white;
+  border-radius: 10rpx;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

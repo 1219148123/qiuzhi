@@ -1,62 +1,18 @@
+const app = getApp();
+const req=require('../../utils/requestAjax.js')
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     house_type:0,//户型
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
     tabTxt:['类型'],//tab文案
+    workType:[],
     tab:[true],
-    data:[
-      {
-        id:1,
-        jobname:'兼职医院英语翻译口译',
-        jobcompany:'北京***科技发展有限公司',
-        jobaddress:'丰台',
-        jobsalary:'150/天',
-        jobway:'月结'
-      },
-      {
-        id:2,
-        jobname:'物流分拣180包吃住可预支',
-        jobcompany:'上海***科技发展有限公司',
-        jobaddress:'平谷',
-        jobsalary:'150/天',
-        jobway:'月结'
-      },
-      {
-        id:3,
-        jobname:'兼职医院英语翻译口译',
-        jobcompany:'北京***科技发展有限公司',
-        jobaddress:'丰台',
-        jobsalary:'150/天',
-        jobway:'月结'
-      },
-      {
-        id:4,
-        jobname:'兼职医院英语翻译口译',
-        jobcompany:'北京***科技发展有限公司',
-        jobaddress:'丰台',
-        jobsalary:'150/天',
-        jobway:'月结'
-      },
-      {
-        id:5,
-        jobname:'兼职医院英语翻译口译',
-        jobcompany:'北京***科技发展有限公司',
-        jobaddress:'丰台',
-        jobsalary:'150/天',
-        jobway:'月结'
-      },
-      {
-        id:6,
-        jobname:'兼职医院英语翻译口译',
-        jobcompany:'北京***科技发展有限公司',
-        jobaddress:'丰台',
-        jobsalary:'150/天',
-        jobway:'月结'
-      }
-    ]
+    jobList:[]
   },
   // onReady: function() {
   //   //初始化数据
@@ -86,7 +42,7 @@ Page({
   //   })
   // },
   filterTab:function(e){
-    var data=[true],
+    let data=[true],
     index=e.currentTarget.dataset.index;
     data[index]=!this.data.tab[index];
     this.setData({
@@ -94,11 +50,15 @@ Page({
     })
 },
 //筛选项点击操作
-filter:function(e){
+filter(e){
   var self=this,
   id=e.currentTarget.dataset.id,
   txt=e.currentTarget.dataset.txt,
   tabTxt=this.data.tabTxt;
+  console.log(e)
+  this.setData({
+    tab:[true]
+  })
   switch(e.currentTarget.dataset.index){
       case '0':
           tabTxt[0]=txt;
@@ -111,75 +71,47 @@ filter:function(e){
           });
       break;
   }
+
   //数据筛选
-  self.getData();
+  this.getData(e);
 },
-getData:function(callback){
-  var self = this;
-  wx.showToast({
-    title: '加载中...',
-    icon: 'loading',
-    duration:10000
-  });
-  self.setData({
-    data:[
-      {
-        id:1,
-        jobname:'兼职医院英语翻译口译',
-        jobcompany:'北京***科技发展有限公司',
-        jobaddress:'丰台',
-        jobsalary:'150/天',
-        jobway:'月结'
-      },
-      {
-        id:2,
-        jobname:'物流分拣180包吃住可预支',
-        jobcompany:'上海***科技发展有限公司',
-        jobaddress:'平谷',
-        jobsalary:'150/天',
-        jobway:'月结'
-      },
-      {
-        id:3,
-        jobname:'兼职医院英语翻译口译',
-        jobcompany:'北京***科技发展有限公司',
-        jobaddress:'丰台',
-        jobsalary:'150/天',
-        jobway:'月结'
-      },
-      {
-        id:4,
-        jobname:'兼职医院英语翻译口译',
-        jobcompany:'北京***科技发展有限公司',
-        jobaddress:'丰台',
-        jobsalary:'150/天',
-        jobway:'月结'
-      },
-      {
-        id:5,
-        jobname:'兼职医院英语翻译口译',
-        jobcompany:'北京***科技发展有限公司',
-        jobaddress:'丰台',
-        jobsalary:'150/天',
-        jobway:'月结'
-      },
-      {
-        id:6,
-        jobname:'兼职医院英语翻译口译',
-        jobcompany:'北京***科技发展有限公司',
-        jobaddress:'丰台',
-        jobsalary:'150/天',
-        jobway:'月结'
-      }
-    ]
-  })
-  wx.hideToast();
+getData(e){
+  console.log(e)
+  let data = {workId:e.currentTarget.dataset.id}
+    data = JSON.stringify(data)
+    req.requestAjax('recruit/list','GET',data,'正在加载',(res)=>{
+      console.log(res)//请求成功回调
+      this.setData({
+        jobList:res
+      })
+		},function(res){
+			console.log(res)//请求失败回调
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onShow: function (options) {
+    let data = {workId:1}
+    data = JSON.stringify(data)
+    req.requestAjax('recruit/list','GET',data,'正在加载',(res)=>{
+      console.log(res)//请求成功回调
+      res = res.reverse()
+      this.setData({
+        jobList:res
+      })
+		},function(res){
+			console.log(res)//请求失败回调
+    })
+    req.requestAjax('type/workType','Get','{}','正在加载',(res)=>{
+      console.log(res)//请求成功回调
+      this.setData({
+        workType:res
+      })
+    },function(res){
+      console.log(res)//请求失败回调
+    })
     
   }
 })

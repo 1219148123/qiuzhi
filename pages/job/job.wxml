@@ -1,31 +1,33 @@
 <!--选项卡-->
-<view class="tabTit box tc bg_f">
+<view class="cu-custom" style="height:{{CustomBar}}px">
+  <view class="cu-bar fixed none-bg text-white bg-img bg-orange padding-left" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+   <view class="tabTit box tc bg_f">
+      <view class="flex1{{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="" data-index="{{index}}" bindtap="filterTab">
+      <text>{{item}}</text>
+      <image src="/images/arrow.png"></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- <view class="tabTit box tc bg_f">
     <view class="flex1{{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="" data-index="{{index}}" bindtap="filterTab">
       <text>{{item}}</text>
       <image src="/images/arrow.png"></image>
     </view>
-</view>
+</view> -->
 <!--筛选项--> 
-<view class="tabLayer tc" hidden="{{tab[0]}}">
-    <text class="{{house_type==0?'active':''}}" data-id="0" data-index="0" data-txt="类型" bindtap="filter">管理</text>
-    <text class="{{house_type==0?'active':''}}" data-id="1" data-index="0" data-txt="类型" bindtap="filter">技术</text>
-    <text class="{{house_type==0?'active':''}}" data-id="2" data-index="0" data-txt="类型" bindtap="filter">产品</text>
-    <text class="{{house_type==0?'active':''}}" data-id="3" data-index="0" data-txt="类型" bindtap="filter">设计</text>
-    <text class="{{house_type==0?'active':''}}" data-id="4" data-index="0" data-txt="类型" bindtap="filter">运营</text>
-    <text class="{{house_type==0?'active':''}}" data-id="5" data-index="0" data-txt="类型" bindtap="filter">市场</text>
-    <text class="{{house_type==0?'active':''}}" data-id="6" data-index="0" data-txt="类型" bindtap="filter">销售</text>
-    <text class="{{house_type==0?'active':''}}" data-id="7" data-index="0" data-txt="类型" bindtap="filter">传媒</text>
-    <text class="{{house_type==0?'active':''}}" data-id="8" data-index="0" data-txt="类型" bindtap="filter">教育</text>
-    <text class="{{house_type==item.id?'active':''}}" wx:for="{{filterList.housetype_list}}" wx:key="" data-id="{{item.id}}" data-index="0" data-txt="{{item.name}}" bindtap="filter">{{item.name}}</text>
-</view>
-
-
+<view class="tabLayer tc" hidden="{{tab[0]}}" style="top:{{CustomBar}}px">
+  <block wx:for="{{workType}}">
+    <text class="{{house_type==0?'active':''}}" data-id="{{item.workTypeId}}" data-index="{{index}}" data-txt="类型" bindtap="filter">{{item.workTypeValue}}</text>
+  </block>
+</view> 
 <view class="w">
     <!--结果-->
-    <block wx:for="{{data}}"  wx:key="id" >
-        <x-job-card job="{{item}}" data-job="{{item.id}}" bindtap="goJobContent"/>
+    <block wx:for="{{jobList}}"  wx:key="zId" >
+        <x-job-card job="{{item}}" data-jobId="{{item.zId}}" bindtap="goJobContent"/>
     </block>
-
+ 
     
     <!--加载更多按钮-->
     <!-- <view wx:if="{{hasMore}}">

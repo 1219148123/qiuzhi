@@ -1,4 +1,4 @@
-// pages/talent/talent.js
+// pages/usedDetail/usedDetail.js
 Page({
 
   /**

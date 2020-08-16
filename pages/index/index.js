@@ -1,4 +1,5 @@
-// pages/job/job.js
+const app = getApp();
+const req=require('../../utils/requestAjax.js')
 Page({
 
   /**
@@ -6,6 +7,9 @@ Page({
    */
   data: {
     cardCur: 0,
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
     swiperList: [{
       id: 0,
       type: 'image',
@@ -36,54 +40,54 @@ Page({
       url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg'
     }],
     jobList:[
-      {
-        id:1,
-        jobname:'兼职医院英语翻译口译',
-        jobcompany:'北京***科技发展有限公司',
-        jobaddress:'丰台',
-        jobsalary:'150/天',
-        jobway:'月结'
-      },
-      {
-        id:2,
-        jobname:'物流分拣180包吃住可预支',
-        jobcompany:'上海***科技发展有限公司',
-        jobaddress:'平谷',
-        jobsalary:'150/天',
-        jobway:'月结'
-      },
-      {
-        id:3,
-        jobname:'兼职医院英语翻译口译',
-        jobcompany:'北京***科技发展有限公司',
-        jobaddress:'丰台',
-        jobsalary:'150/天',
-        jobway:'月结'
-      },
-      {
-        id:4,
-        jobname:'兼职医院英语翻译口译',
-        jobcompany:'北京***科技发展有限公司',
-        jobaddress:'丰台',
-        jobsalary:'150/天',
-        jobway:'月结'
-      },
-      {
-        id:5,
-        jobname:'兼职医院英语翻译口译',
-        jobcompany:'北京***科技发展有限公司',
-        jobaddress:'丰台',
-        jobsalary:'150/天',
-        jobway:'月结'
-      },
-      {
-        id:6,
-        jobname:'兼职医院英语翻译口译',
-        jobcompany:'北京***科技发展有限公司',
-        jobaddress:'丰台',
-        jobsalary:'150/天',
-        jobway:'月结'
-      }
+      // {
+      //   id:1,
+      //   jobname:'兼职医院英语翻译口译',
+      //   jobcompany:'北京***科技发展有限公司',
+      //   jobaddress:'丰台',
+      //   jobsalary:'150/天',
+      //   jobway:'月结'
+      // },
+      // {
+      //   id:2,
+      //   jobname:'物流分拣180包吃住可预支',
+      //   jobcompany:'上海***科技发展有限公司',
+      //   jobaddress:'平谷',
+      //   jobsalary:'150/天',
+      //   jobway:'月结'
+      // },
+      // {
+      //   id:3,
+      //   jobname:'兼职医院英语翻译口译',
+      //   jobcompany:'北京***科技发展有限公司',
+      //   jobaddress:'丰台',
+      //   jobsalary:'150/天',
+      //   jobway:'月结'
+      // },
+      // {
+      //   id:4,
+      //   jobname:'兼职医院英语翻译口译',
+      //   jobcompany:'北京***科技发展有限公司',
+      //   jobaddress:'丰台',
+      //   jobsalary:'150/天',
+      //   jobway:'月结'
+      // },
+      // {
+      //   id:5,
+      //   jobname:'兼职医院英语翻译口译',
+      //   jobcompany:'北京***科技发展有限公司',
+      //   jobaddress:'丰台',
+      //   jobsalary:'150/天',
+      //   jobway:'月结'
+      // },
+      // {
+      //   id:6,
+      //   jobname:'兼职医院英语翻译口译',
+      //   jobcompany:'北京***科技发展有限公司',
+      //   jobaddress:'丰台',
+      //   jobsalary:'150/天',
+      //   jobway:'月结'
+      // }
 
     ]
   },
@@ -94,9 +98,18 @@ Page({
     })
   },
 
-  onLoad() {
+  onShow() {
     this.towerSwiper('swiperList');
     // 初始化towerSwiper 传已有的数组名即可
+    req.requestAjax('recruit/list','GET','{}','正在加载',(res)=>{
+      console.log(res)//请求成功回调
+      res=res.reverse()
+      this.setData({
+        jobList:res
+      })
+		},function(res){
+			console.log(res)//请求失败回调
+    })
   },
   //  轮播图  start
   DotStyle(e) {

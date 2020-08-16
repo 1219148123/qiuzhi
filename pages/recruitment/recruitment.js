@@ -1,65 +1,32 @@
 const app = getApp();
+const req=require('../../utils/requestAjax.js')
 Page({
   data: {
+    warn: "",
+    errorMessage:"",
+    isSubmit: false,
+    // jobContent:"",
+    // jobNeed:"",
+    // jobSalay:"",
+    // jobType:"喵喵喵",
+    // jobEmail:"",
+    // jobPhone:"",
+    // jobAddress:"",
+    // jobTime:"",
+    jobEmailFocus:false,
+    jobPhoneFocus:false,
+    errorModal:false,
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
     index: null,
-    picker: ['喵喵喵', '汪汪汪', '哼唧哼唧'],
-    multiArray: [
-      ['无脊柱动物', '脊柱动物'],
-      ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物'],
-      ['猪肉绦虫', '吸血虫']
-    ],
-    objectMultiArray: [
-      [{
-          id: 0,
-          name: '无脊柱动物'
-        },
-        {
-          id: 1,
-          name: '脊柱动物'
-        }
-      ],
-      [{
-          id: 0,
-          name: '扁性动物'
-        },
-        {
-          id: 1,
-          name: '线形动物'
-        },
-        {
-          id: 2,
-          name: '环节动物'
-        },
-        {
-          id: 3,
-          name: '软体动物'
-        },
-        {
-          id: 3,
-          name: '节肢动物'
-        }
-      ],
-      [{
-          id: 0,
-          name: '猪肉绦虫'
-        },
-        {
-          id: 1,
-          name: '吸血虫'
-        }
-      ]
-    ],
-    multiIndex: [0, 0, 0],
-    time: '12:01',
-    date: '2018-12-25',
-    region: ['广东省', '广州市', '海珠区'],
+    picker: [],
     imgList: [],
-    modalName: null,
+    // modalName: null,
     textareaAValue: '',
     textareaBValue: ''
   },
+  
   PickerChange(e) {
     console.log(e);
     this.setData({
@@ -70,67 +37,6 @@ Page({
     this.setData({
       multiIndex: e.detail.value
     })
-  },
-  MultiColumnChange(e) {
-    let data = {
-      multiArray: this.data.multiArray,
-      multiIndex: this.data.multiIndex
-    };
-    data.multiIndex[e.detail.column] = e.detail.value;
-    switch (e.detail.column) {
-      case 0:
-        switch (data.multiIndex[0]) {
-          case 0:
-            data.multiArray[1] = ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物'];
-            data.multiArray[2] = ['猪肉绦虫', '吸血虫'];
-            break;
-          case 1:
-            data.multiArray[1] = ['鱼', '两栖动物', '爬行动物'];
-            data.multiArray[2] = ['鲫鱼', '带鱼'];
-            break;
-        }
-        data.multiIndex[1] = 0;
-        data.multiIndex[2] = 0;
-        break;
-      case 1:
-        switch (data.multiIndex[0]) {
-          case 0:
-            switch (data.multiIndex[1]) {
-              case 0:
-                data.multiArray[2] = ['猪肉绦虫', '吸血虫'];
-                break;
-              case 1:
-                data.multiArray[2] = ['蛔虫'];
-                break;
-              case 2:
-                data.multiArray[2] = ['蚂蚁', '蚂蟥'];
-                break;
-              case 3:
-                data.multiArray[2] = ['河蚌', '蜗牛', '蛞蝓'];
-                break;
-              case 4:
-                data.multiArray[2] = ['昆虫', '甲壳动物', '蛛形动物', '多足动物'];
-                break;
-            }
-            break;
-          case 1:
-            switch (data.multiIndex[1]) {
-              case 0:
-                data.multiArray[2] = ['鲫鱼', '带鱼'];
-                break;
-              case 1:
-                data.multiArray[2] = ['青蛙', '娃娃鱼'];
-                break;
-              case 2:
-                data.multiArray[2] = ['蜥蜴', '龟', '壁虎'];
-                break;
-            }
-            break;
-        }
-        data.multiIndex[2] = 0;
-        break;
-    }
-    this.setData(data);
   },
   TimeChange(e) {
     this.setData({
@@ -195,6 +101,140 @@ Page({
   textareaBInput(e) {
     this.setData({
       textareaBValue: e.detail.value
+    })
+  },
+  formSubmit: function (e) {
+    console.log('form发生了submit事件，携带数据为：', e.detail.value);
+    let { jobContent,jobNeed,jobSalay,jobType,jobEmail,jobPhone,jobAddress,jobTime, } = e.detail.value;
+    if (!jobContent) {
+      this.setData({
+       jobContentFocus:true,
+       warn: "工作内容为空！",
+       isSubmit: true,
+       errorModal:true,
+       errorMessage:"工作内容不能为空！"
+      })
+      return;
+    }
+    if (!jobNeed) {
+      this.setData({
+       jobNeedFocus:true,
+       warn: "岗位要求为空！",
+       isSubmit: true,
+       errorModal:true,
+       errorMessage:"岗位要求不能为空！"
+      })
+      return;
+     }
+    
+    if (!jobSalay) {
+      this.setData({
+       jobSalayFocus:true,
+       warn: "薪资为空！",
+       isSubmit: true,
+       errorModal:true,
+       errorMessage:"薪资不能为空！"
+      })
+      return;
+    }
+    if (!jobType) {
+      this.setData({
+       jobTypeFocus:true,
+       warn: "工作类型为空！",
+       isSubmit: true,
+       errorModal:true,
+       errorMessage:"工作类型不能为空！"
+      })
+      return;
+    }
+    if (!jobEmail||!(/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(jobEmail))) {
+     this.setData({
+      jobEmailFocus:true,
+      warn: "邮箱为空！",
+      isSubmit: true,
+      errorModal:true,
+      errorMessage:"邮箱地址格式不对！"
+     })
+     return;
+    }
+    if (!jobPhone||!(/^1[3456789]\d{9}$/.test(jobPhone))) {
+      this.setData({
+       jobPhoneFocus:true,
+       warn: "手机号码为空！",
+       isSubmit: true,
+       errorModal:true,
+       errorMessage:"手机号格式不对！"
+      })
+      return;
+    }
+    if (!jobAddress) {
+      this.setData({
+       jobAddressFocus:true,
+       warn: "地址为空！",
+       isSubmit: true,
+       errorModal:true,
+       errorMessage:"工作地址不能为空！"
+      })
+      return;
+    }
+    if (!jobTime) {
+      this.setData({
+       jobTimeFocus:true,
+       warn: "时间为空！",
+       isSubmit: true,
+       errorModal:true,
+       errorMessage:"工作时间不能为空！"
+      })
+      return;
+    }
+    this.setData({
+     warn: "",
+     isSubmit: true,
+     jobContent,
+     jobNeed,
+     jobSalay,
+     jobType,
+     jobEmail,
+     jobPhone,
+     jobAddress,
+     jobTime,
+    })
+    let data = {
+      zId: 0,
+      zStatus: 0,
+      zType: jobType,
+      zWorkAddress: jobAddress,
+      zWorkContent: jobContent,
+      zWorkEmail: jobEmail,
+      zWorkPeriod: null,
+      zWorkPhone: jobPhone,
+      zWorkRequirement: jobNeed,
+      zWorkSalary: jobSalay
+    }
+    data = JSON.stringify(data)
+    req.requestAjax('recruit/insert','POST',data,'正在加载',(res)=>{
+      console.log(res)//请求成功回调
+      // this.setData({
+      //   jobList:res
+      // })
+		},function(res){
+			console.log(res)//请求失败回调
+    })
+    
+   },
+   hideModal(e) {
+    this.setData({
+      errorModal: false
+    })
+  },
+  onShow(){
+    req.requestAjax('type/workType','Get','{}','正在加载',(res)=>{
+      console.log(res)//请求成功回调
+      this.setData({
+        picker:res
+      })
+		},function(res){
+			console.log(res)//请求失败回调
     })
   }
 })

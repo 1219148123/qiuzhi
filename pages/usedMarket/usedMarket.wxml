@@ -1,0 +1,38 @@
+<view class="cu-custom" style="height:{{CustomBar}}px">
+  <view class="cu-bar fixed none-bg text-white bg-img bg-orange padding-left" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <scroll-view scroll-x class="bg-orange nav">
+      <view class="cu-item {{index==TabCur?'text-white cur':''}} nav-font" wx:for="{{tarbarList}}" wx:key bindtap="tabSelect" data-id="{{index}}">
+        {{item}}
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+
+<view class="cu-card dynamic no-card"   bindtap="goUsedDetail">
+  <view class="cu-item shadow">
+    <block wx:if="{{TabCur==0}}">
+      <block wx:for="{{carMarketList}}">
+        <view class="cu-list menu-avatar">
+          <view class="header margin-left margin-top">
+            <view class="title-style">{{item.type.carTypeValue}}</view>
+            <view class="text-gray text-sm flex justify-between">
+                {{item.carTime}}
+            </view>
+          </view>
+        </view>
+        <view class="text-content">
+          <!-- {{item.carKilometre}} -->
+          车辆描述:新到别克君越，2.4高配，车况补漆难找，备胎没落地。原始抵押全款车，一键启动，全景天窗，具体配置看图
+          <text style="color:#799EC3">更多</text>
+        </view>
+        <view class="grid flex-sub padding-lr col-3 grid-square">
+          <view class="bg-img" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);" wx:for="{{9}}" wx:key="{{index}}">
+          </view>
+        </view>
+      </block>
+      
+    </block>
+    
+  </view>
+</view>

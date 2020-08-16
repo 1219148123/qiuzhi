@@ -5,9 +5,9 @@
       <text class="back-text">返回</text>
     </view>
     <view class="job-desc">
-      <view class="job-title">便利店配送170一天就近分配</view>
-      <view class="job-salary">170/天</view>
-      <view class="job-address">昌平|送餐员</view>
+      <view class="job-title">{{jobdetail.zWorkContent}}</view>
+      <view class="job-salary">{{jobdetail.zWorkSalary}}元/天</view>
+      <view class="job-address">{{jobdetail.workType.workTypeValue}}</view>
     </view>
   </view>
   <view class="content">
@@ -40,15 +40,15 @@
   <view class="cu-item shadow">
     <view class="cell-item margin-top">
       <text class="tabel">工作内容:</text>
-      <text>墨刀企业版是在家远程办公的好帮手,更是一款专业、可靠、简洁、易懂的在线产品原型工具与产品设计团队协作平台,能高效、轻松的解决团队成员远程办公,高效协作编辑</text> 
+      <text>{{jobdetail.zWorkContent}}</text> 
     </view>
     <view class="cell-item margin-top">
       <text class="tabel">岗位要求:</text>
-      <text>墨刀从个人到企业/团队,从原型到交互到标注,满足不同规模项目各阶段需求,项目管理、成员管理、数据统计等炫酷功能等您来体验 ,还会提供更多专属技术支持、专属客户</text>
+      <text>{{jobdetail.zWorkRequirement}}</text>
     </view>
     <view class="cell-item margin-top">
       <text class="tabel">工作薪资:</text>
-      <text>150元/天</text>
+      <text>{{jobdetail.zWorkSalary}}元/天</text>
     </view>
   </view>
 </view>
@@ -61,11 +61,11 @@
   <view class="cu-item shadow">
     <view class="cell-item margin-top">
       <text class="tabel">邮箱地址:</text>
-      <text>123465@qq.com</text> 
+      <text>{{jobdetail.zWorkEmail?jobdetail.zWorkEmail:'无'}}</text> 
     </view>
     <view class="cell-item margin-top">
       <text class="tabel">电话号码:</text>
-      <text>13248513254</text>
+      <text>{{jobdetail.zWorkPhone}}</text>
     </view>
   </view>
 </view>
@@ -78,11 +78,11 @@
   <view class="cu-item shadow">
     <view class="cell-item margin-top">
       <text class="tabel">工作地址:</text>
-      <text>123465@qq.com</text> 
+      <text>{{jobdetail.zWorkAddress}}</text> 
     </view>
     <view class="cell-item margin-top">
       <text class="tabel">工作时间:</text>
-      <text>13248513254</text>
+      <text>{{jobdetail.zTime}}</text>
     </view>
   </view>
 </view>

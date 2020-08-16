@@ -2,14 +2,16 @@
   "pages":[
     "pages/index/index",
     "pages/job/job",
-    "pages/talent/talent",
+    "pages/usedMarket/usedMarket",
     "pages/my/my",
     "pages/test/test",
     "pages/logs/logs",
     "pages/jobDetail/jobDetail",
     "pages/applyForJob/applyForJob",
     "pages/recruitment/recruitment",
-    "pages/usedCar/usedCar"
+    "pages/usedCar/usedCar",
+    "pages/usedHourse/usedHourse",
+    "pages/usedDetail/usedDetail"
   ],
   "tabBar": {
     "color": "#000",
@@ -30,8 +32,8 @@
         "selectedIconPath": "images/job-A.png"
       },
       {
-        "pagePath": "pages/talent/talent",
-        "text": "人才市场",
+        "pagePath": "pages/usedMarket/usedMarket",
+        "text": "二手市场",
         "iconPath": "images/talent.png",
         "selectedIconPath": "images/talent-A.png"
       },

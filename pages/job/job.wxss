@@ -1,24 +1,20 @@
 page{
-  padding:90rpx 0 50px;
   background-color: #fff;
 }
 .tabTit{
   height:90rpx;
   line-height: 90rpx;
-  border-bottom: solid 1px #eee;
-  position:fixed;
-  top:0;
   width: 750rpx;
   z-index: 1;
-  background-color: #fff;
+  background-color: #F37B1D;
   padding-left: 37rpx;
   font-size: 30rpx;
   font-weight: bolder;
 }
 /* #FC9A4E; border-radius: 10rpx;color: #fff; */
 .tabTit .active{
-  color:#FC9A4E;
-  background: #fff;
+  color:#fff;
+  background: #F37B1D;
 }
 .tabTit .active image{
   transform: rotate(180deg);
@@ -32,9 +28,11 @@ page{
 }
 .tabLayer{
   box-shadow: 0 5px 5px rgba(0,0,0,.15);
-  width:750rpx;overflow: hidden;
-  position: fixed;top:90rpx;
-  z-index: 1;
+  width:750rpx;
+  overflow: hidden;
+  position: fixed;
+  /* top:90rpx; */
+  z-index: 200;
   background: #fff;
   padding-bottom: 26rpx;
   border-bottom: solid 1px #eee;
