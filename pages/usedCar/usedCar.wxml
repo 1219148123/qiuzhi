@@ -12,8 +12,8 @@
 		<view class="title" >车辆描述</view>
 		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="具体工作内容 " name="carKilometre"></textarea>
 	</view>
-  	<view class="cu-bar bg-white margin-top">
-		<view class="action">
+  <view class="cu-bar bg-white margin-top">
+		<view class="action" bindtap="click">
 			图片上传
 		</view>
 		<view class="action">

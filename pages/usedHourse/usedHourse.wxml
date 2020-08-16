@@ -2,7 +2,7 @@
 	<view slot="backText">返回</view>
 </cu-custom>
 
-<form>
+<form bindsubmit="formSubmit">
   <view class="cu-bar bg-white solid-bottom margin-top">
     <view class="action">
       <text class="cuIcon-title text-orange "></text> 房子详情
@@ -10,7 +10,7 @@
   </view>
   <view class="cu-form-group align-start margin-top">
 		<view class="title">房子描述</view>
-		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="具体工作内容 "></textarea>
+		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="具体工作内容 " name="hContent"></textarea>
 	</view>
   	<view class="cu-bar bg-white margin-top">
 		<view class="action">
@@ -37,7 +37,7 @@
 
   <view class="cu-form-group margin-top">
 		<view class="title">预期价位</view>
-		<input placeholder="例 : 150元/天 或 3000元/月"></input>
+		<input placeholder="例 : 150元/天 或 3000元/月" name="hMoney"></input>
 	</view>
 
   <view class="cu-bar bg-white solid-bottom margin-top">
@@ -46,12 +46,12 @@
     </view>
   </view>
 	<view class="cu-form-group margin-top">
-		<view class="title">邮件</view>
-		<input placeholder="选填"></input>
+		<view class="title">联系人</view>
+		<input name="hPeople"></input>
 	</view>
   <view class="cu-form-group">
 		<view class="title">手机号码</view>
-		<input></input>
+		<input name="hPhone"></input>
 		<view class="cu-capsule radius">
 			<view class="cu-tag bg-orange">
 				+86
@@ -68,9 +68,25 @@
   </view>
   <view class="cu-form-group">
 		<view class="title">房子地址</view>
-		<input placeholder="详细地址"></input>
+		<input placeholder="详细地址" name="hAddress"></input>
 	</view>
   <view class="padding flex flex-direction">
-    <button class="cu-btn bg-orange lg round">提交信息</button>
+    <button class="cu-btn bg-orange lg round" form-type="submit">提交信息</button>
   </view>
+	<view wx:if="{{isSubmit}}">
+ 	{{"工作内容："+jobContent+"岗位要求："+jobNeed+"，薪资："+jobSalay+"，工作类型："+jobType+"，邮件："+jobEmail+"，手机号码："+jobPhone+"，工作地址："+jobAddress+"，工作时间："+jobTime}}
+	</view>
 </form>
+<view class="cu-modal {{errorModal?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">提示</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      {{errorMessage}}
+    </view>
+  </view>
+</view>

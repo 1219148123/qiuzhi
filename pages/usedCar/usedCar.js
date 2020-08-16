@@ -15,6 +15,9 @@ Page({
     errorMessage:"",
     isSubmit: false,
   },
+  click(e){
+    console.log(e)
+  },
   PickerChange(e) {
     console.log(e);
     this.setData({
