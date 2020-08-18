@@ -8,7 +8,7 @@ Page({
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     index: null,
-    picker: ['货车', '轿车', '客车', '电动车', '摩托车'],
+    picker: [],
     imgList: [],
     modalName: null,
     textareaAValue: '',
@@ -87,8 +87,11 @@ Page({
     })
   },
   formSubmit: function (e) {
+    wx.showToast({
+      title: '提交成功',
+    })
     console.log('form发生了submit事件，携带数据为：', e.detail.value);
-    let {hContent,hImg,hMoney,hPeople,hPhone,hAddress} = e.detail.value;
+    let {hContent,hImg,hMoney,hType,hPeople,hPhone,hAddress} = e.detail.value;
     if (!hContent) {
       this.setData({
        warn: "房子描述为空！",
@@ -107,7 +110,15 @@ Page({
       })
       return;
      }
-    
+     if (!hType) {
+      this.setData({
+       warn: "装修类型为空！",
+       isSubmit: true,
+       errorModal:true,
+       errorMessage:"装修类型不能为空！"
+      })
+      return;
+     }
     if (!hPeople) {
       this.setData({
        warn: "联系人为空！",
@@ -144,17 +155,28 @@ Page({
       hMoney,
       hPeople,
       hStatus:1,
-      hTime:""
+      hTime:"",
+      hType
     }
     data = JSON.stringify(data)
     req.requestAjax('house/insert','POST',data,'正在加载',(res)=>{
       console.log(res)//请求成功回调
-      // this.setData({
-      //   jobList:res
-      // })
+      wx.navigateBack({
+        delta: 0,
+      })
 		},function(res){
 			console.log(res)//请求失败回调
     })
     
    },
+   onShow(){
+    req.requestAjax('type/houseType','Get','{}','正在加载',(res)=>{
+      console.log(res)//请求成功回调
+      this.setData({
+        picker:res
+      })
+		},function(res){
+			console.log(res)//请求失败回调
+    })
+   }
 })

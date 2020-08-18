@@ -8,11 +8,10 @@
   </view>
 </view>
 
-
-<view class="cu-card dynamic no-card"   bindtap="goUsedDetail">
-  <view class="cu-item shadow">
-    <block wx:if="{{TabCur==0}}">
-      <block wx:for="{{carMarketList}}">
+<block wx:if="{{TabCur==0}}">
+  <block wx:for="{{carMarketList}}">
+    <view class="cu-card dynamic no-card"   bindtap="goUsedDetail" data-carId="{{item.carId}}">
+      <view class="cu-item shadow">
         <view class="cu-list menu-avatar">
           <view class="header margin-left margin-top">
             <view class="title-style">{{item.type.carTypeValue}}</view>
@@ -22,17 +21,41 @@
           </view>
         </view>
         <view class="text-content">
-          <!-- {{item.carKilometre}} -->
-          车辆描述:新到别克君越，2.4高配，车况补漆难找，备胎没落地。原始抵押全款车，一键启动，全景天窗，具体配置看图
+          {{item.carKilometre}}
+          <!-- 车辆描述:新到别克君越，2.4高配，车况补漆难找，备胎没落地。原始抵押全款车，一键启动，全景天窗，具体配置看图 -->
           <text style="color:#799EC3">更多</text>
         </view>
         <view class="grid flex-sub padding-lr col-3 grid-square">
           <view class="bg-img" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);" wx:for="{{9}}" wx:key="{{index}}">
           </view>
         </view>
-      </block>
-      
-    </block>
-    
-  </view>
-</view>
+      </view>
+    </view>
+  </block> 
+</block>
+
+<block wx:if="{{TabCur==1}}">
+  <block wx:for="{{houseMarketList}}">
+    <view class="cu-card dynamic no-card"   bindtap="goUsedDetail" data-hId="{{item.hId}}">
+      <view class="cu-item shadow">
+        <view class="cu-list menu-avatar">
+          <view class="header margin-left margin-top">
+            <view class="title-style">{{item.houseType.hopValue}}</view>
+            <view class="text-gray text-sm flex justify-between">
+                {{item.hTime}}
+            </view>
+          </view>
+        </view>
+        <view class="text-content">
+          {{item.hContent}}
+          <!-- 车辆描述:新到别克君越，2.4高配，车况补漆难找，备胎没落地。原始抵押全款车，一键启动，全景天窗，具体配置看图 -->
+          <text style="color:#799EC3">更多</text>
+        </view>
+        <view class="grid flex-sub padding-lr col-3 grid-square">
+          <view class="bg-img" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);" wx:for="{{9}}" wx:key="{{index}}">
+          </view>
+        </view>
+      </view>
+    </view>
+  </block> 
+</block>

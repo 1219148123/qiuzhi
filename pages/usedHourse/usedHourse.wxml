@@ -39,6 +39,14 @@
 		<view class="title">预期价位</view>
 		<input placeholder="例 : 150元/天 或 3000元/月" name="hMoney"></input>
 	</view>
+	<view class="cu-form-group">
+		<view class="title">装修类型</view>
+		<picker bindchange="PickerChange" value="{{houId}}" range="{{picker}}" name="hType" range-key="hopValue">
+			<view class="picker">
+				{{index?picker[index].hopValue:'请选择'}}
+			</view>
+		</picker>
+	</view>
 
   <view class="cu-bar bg-white solid-bottom margin-top">
     <view class="action">

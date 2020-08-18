@@ -14,3 +14,8 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.title-font{
+  color:#FCA059;
+  font-weight:500;
+}

@@ -104,6 +104,9 @@ Page({
     })
   },
   formSubmit: function (e) {
+    wx.showToast({
+      title: '提交成功',
+    })
     console.log('form发生了submit事件，携带数据为：', e.detail.value);
     let { jobContent,jobNeed,jobSalay,jobType,jobEmail,jobPhone,jobAddress,jobTime, } = e.detail.value;
     if (!jobContent) {
@@ -214,9 +217,9 @@ Page({
     data = JSON.stringify(data)
     req.requestAjax('recruit/insert','POST',data,'正在加载',(res)=>{
       console.log(res)//请求成功回调
-      // this.setData({
-      //   jobList:res
-      // })
+      wx.navigateBack({
+        delta: 0,
+      })
 		},function(res){
 			console.log(res)//请求失败回调
     })

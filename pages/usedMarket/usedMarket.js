@@ -60,9 +60,17 @@ Page({
       })
     }
   },
-  goUsedDetail(){
-    wx.navigateTo({
-      url: '/pages/usedDetail/usedDetail',
-    })
+  goUsedDetail(e){
+    console.log(e)
+    if(this.data.TabCur==0){
+      wx.navigateTo({
+        url: '/pages/usedDetail/usedDetail?carId='+e.currentTarget.dataset.carid,
+      })
+    }
+    if(this.data.TabCur==1){
+      wx.navigateTo({
+        url: '/pages/usedDetail/usedDetail?hId='+e.currentTarget.dataset.hid,
+      })
+    }
   }
 })
