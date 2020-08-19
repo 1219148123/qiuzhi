@@ -7,7 +7,6 @@ Page({
     index: null,
     picker: [],
     imgList: [],
-    imgList: [],
     modalName: null,
     textareaAValue: '',
     textareaBValue: '',
@@ -45,6 +44,7 @@ Page({
     })
   },
   ChooseImage() {
+    console.log("选择图片")
     wx.chooseImage({
       count: 4, //默认9
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
@@ -95,11 +95,20 @@ Page({
     })
   },
   formSubmit: function (e) {
-    wx.showToast({
-      title: '提交成功',
-    })
+    
     console.log('form发生了submit事件，携带数据为：', e.detail.value);
     let {carKilometre,carImg,carNowPrice,carType,carPeople,carPhone,carOriginalPrice} = e.detail.value;
+    this.data.imgList.forEach(imgUrl => {
+      // console.log(imgUrl)
+      let imgData = {file:imgUrl}
+      imgData = JSON.stringify(imgData)
+      req.requestAjax('secondeHandCar/carImgUpload','POST',imgData,'正在加载',(res)=>{
+        console.log(res)//请求成功回调
+      },function(res){
+        console.log(res)//请求失败回调
+      })
+    });
+    
     if (!carKilometre) {
       this.setData({
        warn: "车辆描述为空！",
@@ -172,6 +181,9 @@ Page({
     data = JSON.stringify(data)
     req.requestAjax('secondeHandCar/insert','POST',data,'正在加载',(res)=>{
       console.log(res)//请求成功回调
+      wx.showToast({
+        title: '提交成功',
+      })
       wx.navigateBack({
         delta: 0,
       })
