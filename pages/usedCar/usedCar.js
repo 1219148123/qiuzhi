@@ -102,11 +102,19 @@ Page({
       // console.log(imgUrl)
       let imgData = {file:imgUrl}
       imgData = JSON.stringify(imgData)
-      req.requestAjax('secondeHandCar/carImgUpload','POST',imgData,'正在加载',(res)=>{
-        console.log(res)//请求成功回调
-      },function(res){
-        console.log(res)//请求失败回调
-      })
+      // var tempFilePaths = res.tempFilePaths[0]
+       console.log("路径" + imgUrl);
+      wx.uploadFile({
+        url: 'http://127.0.0.1:9797/secondeHandCar/carImgUpload',
+         filePath: imgUrl,
+         name: 'file',
+         header: {
+           'content-type': 'multipart/form-data'
+         },
+         success(res) {
+           console.log(res.data)
+         }
+       })
     });
     
     if (!carKilometre) {

@@ -146,7 +146,24 @@ Page({
       })
       return;
     }
-   
+    this.data.imgList.forEach(imgUrl => {
+      // console.log(imgUrl)
+      let imgData = {file:imgUrl}
+      imgData = JSON.stringify(imgData)
+      // var tempFilePaths = res.tempFilePaths[0]
+       console.log("路径" + imgUrl);
+      wx.uploadFile({
+        url: 'http://127.0.0.1:9797/house/houseImgUpload',
+         filePath: imgUrl,
+         name: 'file',
+         header: {
+           'content-type': 'multipart/form-data'
+         },
+         success(res) {
+           console.log(res.data)
+         }
+       })
+    });
     let data = {
       hAddress,
       hContent,
