@@ -173,7 +173,7 @@ Page({
       hPeople,
       hStatus:1,
       hTime:"",
-      hType
+      hType: parseInt(hType)+1
     }
     data = JSON.stringify(data)
     req.requestAjax('house/insert','POST',data,'正在加载',(res)=>{

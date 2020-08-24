@@ -22,7 +22,7 @@
 	</view>
   <view class="cu-form-group">
 		<view class="title">工作类型</view>
-		<picker bindchange="PickerChange" value="{{workTypeId}}" range="{{picker}}" range-key="workTypeValue" name="jobType"> 
+		<picker bindchange="PickerChange" value="{{index}}" range="{{picker}}" range-key="workTypeValue" name="jobType"> 
 			<view class="picker">
 				{{index?picker[index].workTypeValue:'请选择'}}
 			</view>

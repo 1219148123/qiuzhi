@@ -41,7 +41,7 @@
 	</view>
   <view class="cu-form-group">
 		<view class="title">车辆类型</view>
-		<picker bindchange="PickerChange" value="{{carTypeId}}" range="{{picker}}" name="carType" range-key="carTypeValue">
+		<picker bindchange="PickerChange" value="{{index}}" range="{{picker}}" name="carType" range-key="carTypeValue">
 			<view class="picker">
 				{{index?picker[index].carTypeValue:'请选择'}}
 			</view>

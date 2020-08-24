@@ -184,7 +184,7 @@ Page({
       carPhone,
       carStatus:1,
       carTime:"",
-      carType,
+      carType: parseInt(carType)+1
     }
     data = JSON.stringify(data)
     req.requestAjax('secondeHandCar/insert','POST',data,'正在加载',(res)=>{

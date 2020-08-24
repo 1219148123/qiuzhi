@@ -205,7 +205,7 @@ Page({
     let data = {
       zId: 0,
       zStatus: 0,
-      zType: jobType,
+      zType: parseInt(jobType)+1,
       zWorkAddress: jobAddress,
       zWorkContent: jobContent,
       zWorkEmail: jobEmail,
