@@ -48,7 +48,7 @@
     </view>
     <view class="cell-item margin-top">
       <text class="tabel">工作薪资:</text>
-      <text>{{jobdetail.zWorkSalary}}元/天</text>
+      <text>{{jobdetail.zWorkSalary}}</text>
     </view>
   </view>
 </view>
@@ -60,7 +60,7 @@
 <view class="cu-card article no-card">
   <view class="cu-item shadow">
     <view class="cell-item margin-top">
-      <text class="tabel">邮箱地址:</text>
+      <text class="tabel">联系人:</text>
       <text>{{jobdetail.zWorkEmail?jobdetail.zWorkEmail:'无'}}</text> 
     </view>
     <view class="cell-item margin-top">

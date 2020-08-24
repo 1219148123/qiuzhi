@@ -17,8 +17,8 @@ function requestAjax(url,method,data={}, message, success, fail) {
   data=JSON.parse(data)
   wx.request({
   //可以写上请求的域名  后期改测试服正式服 改一个地方就可以 前缀写上后期上线改地址好改
-    //url: 'http://47.103.4.57:9797/'+url,
-    url: 'http://127.0.0.1:9797/'+url,
+    url: 'http://47.103.4.57:9797/'+url,
+    // url: 'http://127.0.0.1:9797/'+url,
     data,
     method,//方法也可以改成变量 传入
     success: function (res) {

@@ -1,11 +1,12 @@
+ 
 <view class="job-card">
   <view>
     <view class="job-name">{{job.zWorkContent}}</view>
-    <view class="job-font">{{job.zWorkAddress}}</view>
-    <view class="job-ad">{{job.workType.workTypeValue}}</view>
+    <view class="jobTime-font">{{job.zTime}}</view>
+    <view class="jobAd-font">{{job.zWorkAddress}}</view>
   </view>
   <view>
-    <view class="job-salary">{{job.zWorkSalary}}/天</view>
-    <view class="job-font job-way">未知</view>
+    <view class="job-salary">{{job.zWorkSalary}}</view>
+    <view class="job-ad">{{job.workType.workTypeValue}}</view>
   </view>
 </view>

@@ -108,7 +108,7 @@ Page({
       title: '提交成功',
     })
     console.log('form发生了submit事件，携带数据为：', e.detail.value);
-    let { jobContent,jobNeed,jobSalay,jobType,jobEmail,jobPhone,jobAddress,jobTime, } = e.detail.value;
+    let { jobContent,jobNeed,jobSalay,jobType,jobPeople,jobPhone,jobAddress,jobPeriod, } = e.detail.value;
     if (!jobContent) {
       this.setData({
        jobContentFocus:true,
@@ -130,7 +130,7 @@ Page({
       return;
      }
     
-    if (!jobSalay) {
+    if (!jobSalay||!(/^[1-9]\d*元\/天|[1-9]\d*元\/月$/.test(jobSalay))) {
       this.setData({
        jobSalayFocus:true,
        warn: "薪资为空！",
@@ -150,13 +150,12 @@ Page({
       })
       return;
     }
-    if (!jobEmail||!(/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(jobEmail))) {
+    if (!jobPeople) {
      this.setData({
-      jobEmailFocus:true,
-      warn: "邮箱为空！",
+      warn: "联系人为空！",
       isSubmit: true,
       errorModal:true,
-      errorMessage:"邮箱地址格式不对！"
+      errorMessage:"联系人不能为空！"
      })
      return;
     }
@@ -180,7 +179,7 @@ Page({
       })
       return;
     }
-    if (!jobTime) {
+    if (!jobPeriod) {
       this.setData({
        jobTimeFocus:true,
        warn: "时间为空！",
@@ -190,26 +189,14 @@ Page({
       })
       return;
     }
-    this.setData({
-     warn: "",
-     isSubmit: true,
-     jobContent,
-     jobNeed,
-     jobSalay,
-     jobType,
-     jobEmail,
-     jobPhone,
-     jobAddress,
-     jobTime,
-    })
     let data = {
       zId: 0,
       zStatus: 0,
       zType: parseInt(jobType)+1,
       zWorkAddress: jobAddress,
       zWorkContent: jobContent,
-      zWorkEmail: jobEmail,
-      zWorkPeriod: null,
+      zWorkEmail: jobPeople,
+      zWorkPeriod: jobPeriod,
       zWorkPhone: jobPhone,
       zWorkRequirement: jobNeed,
       zWorkSalary: jobSalay
