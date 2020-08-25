@@ -23,7 +23,7 @@
 .footer{
   display: flex;
   justify-content: center;
-  background-color: #F1F1F1;
+  /* background-color: #F1F1F1; */
 }
 .div-bottom{
   margin:20rpx 0;

@@ -81,6 +81,7 @@ getData(e){
     data = JSON.stringify(data)
     req.requestAjax('recruit/list','GET',data,'正在加载',(res)=>{
       console.log(res)//请求成功回调
+      res = res.reverse()
       this.setData({
         jobList:res
       })
