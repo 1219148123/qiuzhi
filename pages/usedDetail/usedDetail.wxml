@@ -31,7 +31,7 @@
       </view>
       <view class="grid flex-sub padding-lr col-3 grid-square">
         <view  wx:for="{{carDetail.carImg}}" wx:key="{{index}}" wx:for-item="imgUrl" wx:if="{{item.carImg!=''}}">
-          <image mode="aspectFill" class="bg-img" src="{{imgUrl}}"></image>
+          <image mode="aspectFill" class="bg-img" src="{{imgUrl}}" bindtap='previewImg' data-src='{{imgUrl}}' data-imgArr="{{carDetail.carImg}}"></image>
         </view>
       </view>
     </view>

@@ -43,5 +43,18 @@ Page({
         console.log(res)//请求失败回调
       })
     }
+  },
+  previewImg:function(e){
+    console.log(e)
+    var imgUrl = e.currentTarget.dataset.src; //获取当前点击的图片
+    var imgArr = e.currentTarget.dataset.imgarr;
+    wx.previewImage({
+      current: imgUrl, //当前图片地址
+      urls: imgArr,  //所有要预览的图片的地址集合数组形式
+      // urls: [imgUrl], //一张图写法
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   }
 })
