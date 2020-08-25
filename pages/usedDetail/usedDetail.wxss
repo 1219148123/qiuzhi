@@ -1,11 +1,15 @@
+page{
+  background-color: #fff;
+}
 .header{
-  height: 90rpx;
+  height: 110rpx;
   /* margin-left: 30rpx; */
 }
 .title-style{
   margin-bottom: 10rpx;
   height: 45rpx;
-  width: 100rpx;
+  width: fit-content;
+  padding: 0 20rpx;
   background-color: #FCA059;
   color: white;
   border-radius: 10rpx;

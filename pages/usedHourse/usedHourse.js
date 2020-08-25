@@ -106,10 +106,11 @@ Page({
        warn: "预期价位为空！",
        isSubmit: true,
        errorModal:true,
-       errorMessage:"预期价位不能为空！"
+       errorMessage:"预期价位格式不正确！"
       })
       return;
      }
+
      if (!hType) {
       this.setData({
        warn: "装修类型为空！",
@@ -178,13 +179,15 @@ Page({
     data = JSON.stringify(data)
     req.requestAjax('house/insert','POST',data,'正在加载',(res)=>{
       console.log(res)//请求成功回调
-      wx.navigateBack({
-        delta: 0,
+      wx.showToast({
+        title: '提交成功',
       })
 		},function(res){
 			console.log(res)//请求失败回调
     })
-    
+    wx.navigateBack({
+      delta: 0,
+    })
    },
    onShow(){
     req.requestAjax('type/houseType','Get','{}','正在加载',(res)=>{

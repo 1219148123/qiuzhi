@@ -10,7 +10,7 @@
   </view>
   <view class="cu-form-group align-start margin-top">
 		<view class="title">房子描述</view>
-		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="具体工作内容 " name="hContent"></textarea>
+		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput"  name="hContent"></textarea>
 	</view>
   	<view class="cu-bar bg-white margin-top">
 		<view class="action">
@@ -37,7 +37,7 @@
 
   <view class="cu-form-group margin-top">
 		<view class="title">预期价位</view>
-		<input placeholder="例 : 150元/天 或 3000元/月" name="hMoney"></input>
+		<input name="hMoney"></input>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">装修类型</view>

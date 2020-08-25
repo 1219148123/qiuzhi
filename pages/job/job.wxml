@@ -27,16 +27,7 @@
     <block wx:for="{{jobList}}"  wx:key="zId" >
         <x-job-card job="{{item}}" data-jobId="{{item.zId}}" bindtap="goJobContent"/>
     </block>
- 
-    
-    <!--加载更多按钮-->
-    <!-- <view wx:if="{{hasMore}}">
-        <button type="warn" plain="true" disabled="{{disabled}}" bindtap="getMore" class="mt20">{{moreTxt}}</button>
-    </view> -->
-    <!--无数据提示-->
-    <!-- <view class="null tc" hidden="{{dataNull}}">
-        <icon type="clear" size="100" color="#ccc"/>
-        <view class="txt1">当前筛选无结果</view>
-        <view class="txt2">您可以尝试筛选其他分类看看</view>
-    </view> -->
+</view>
+<view class="footer">
+  <view class="div-bottom">—— END ——</view>
 </view>

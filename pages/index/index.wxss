@@ -50,7 +50,11 @@
   padding:20rpx 30rpx;
   font-weight: 700;
 }
+.footer{
+  display: flex;
+  justify-content: center;
+}
 .div-bottom{
+  margin:20rpx 0;
   color: rgb(185, 182, 182);
 }
-

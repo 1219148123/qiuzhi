@@ -20,22 +20,25 @@ Page({
     if(options.carId != undefined){
       req.requestAjax('secondeHandCar/get','GET',data,'正在加载',(res)=>{
         console.log(res)//请求成功回调
-          this.setData({
-            carDetail:res,
-            cur:0
-          })
+        res.carImg = res.carImg.split(',')
+        console.log(res)//请求成功回调
+        this.setData({
+          carDetail:res,
+          cur:0
+        })
       },function(res){
         console.log(res)//请求失败回调
       })
     }else{
       req.requestAjax('house/get','GET',data,'正在加载',(res)=>{
+        res.hImg = res.hImg.split(',')
         console.log(res)//请求成功回调
-          this.setData({
-            hDetail:res,
-            cur:1
-          })
-          console.log("000000000000000")
-          console.log(this.data.hDetail)
+
+        this.setData({
+          hDetail:res,
+          cur:1
+        })
+        console.log(this.data.hDetail)
       },function(res){
         console.log(res)//请求失败回调
       })

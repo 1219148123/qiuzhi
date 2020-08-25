@@ -10,7 +10,7 @@
 
 <block wx:if="{{TabCur==0}}">
   <block wx:for="{{carMarketList}}">
-    <view class="cu-card dynamic no-card"   bindtap="goUsedDetail" data-carId="{{item.carId}}">
+    <view class="cu-card dynamic no-card" bindtap="goUsedDetail" data-carId="{{item.carId}}" style="border-bottom: 4rpx solid rgb(228, 227, 227); padding-bottom:40rpx;background-color:#fff">
       <view class="cu-item shadow">
         <view class="cu-list menu-avatar">
           <view class="header margin-left margin-top">
@@ -26,7 +26,9 @@
           <text style="color:#799EC3">更多</text>
         </view>
         <view class="grid flex-sub padding-lr col-3 grid-square">
-          <view class="bg-img" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);" wx:for="{{9}}" wx:key="{{index}}">
+          <view  wx:for="{{item.carImg}}" wx:key="{{index}}" wx:for-item="imgUrl" wx:if="{{item.carImg!=''}}">
+            <image mode="aspectFill" class="bg-img" src="{{imgUrl}}"></image>
+            <!-- <view>{{item.carImg}}</view> -->
           </view>
         </view>
       </view>
@@ -36,7 +38,7 @@
 
 <block wx:if="{{TabCur==1}}">
   <block wx:for="{{houseMarketList}}">
-    <view class="cu-card dynamic no-card"   bindtap="goUsedDetail" data-hId="{{item.hId}}">
+    <view class="cu-card dynamic no-card"   bindtap="goUsedDetail" data-hId="{{item.hId}}" style="border-bottom: 4rpx solid rgb(228, 227, 227); padding-bottom:40rpx;background-color:#fff">
       <view class="cu-item shadow">
         <view class="cu-list menu-avatar">
           <view class="header margin-left margin-top">
@@ -52,10 +54,15 @@
           <text style="color:#799EC3">更多</text>
         </view>
         <view class="grid flex-sub padding-lr col-3 grid-square">
-          <view class="bg-img" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);" wx:for="{{9}}" wx:key="{{index}}">
+          <view  wx:for="{{item.hImg}}" wx:key="{{index}}" wx:for-item="imgUrl" wx:if="{{item.hImg!=''}}">
+            <image mode="aspectFill" class="bg-img" src="{{imgUrl}}"></image>
+            <!-- <view>{{item.carImg}}</view> -->
           </view>
         </view>
       </view>
     </view>
   </block> 
 </block>
+<view class="footer">
+  <view class="div-bottom">—— END ——</view>
+</view>

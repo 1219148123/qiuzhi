@@ -11,7 +11,8 @@
     "pages/recruitment/recruitment",
     "pages/usedCar/usedCar",
     "pages/usedHourse/usedHourse",
-    "pages/usedDetail/usedDetail"
+    "pages/usedDetail/usedDetail",
+    "pages/investment/investment"
   ],
   "tabBar": {
     "color": "#000",

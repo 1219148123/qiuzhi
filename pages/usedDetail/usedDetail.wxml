@@ -30,7 +30,8 @@
         <text class="title-font">提货地址: </text>{{carDetail.OriginalPrice}}
       </view>
       <view class="grid flex-sub padding-lr col-3 grid-square">
-        <view class="bg-img" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);" wx:for="{{9}}" wx:key="{{index}}">
+        <view  wx:for="{{carDetail.carImg}}" wx:key="{{index}}" wx:for-item="imgUrl" wx:if="{{item.carImg!=''}}">
+          <image mode="aspectFill" class="bg-img" src="{{imgUrl}}"></image>
         </view>
       </view>
     </view>
@@ -43,7 +44,7 @@
     <view class="cu-item shadow">
       <view class="cu-list menu-avatar">
         <view class="header margin-left margin-top">
-          <view class="title-style">{{hDetail.type.carTypeValue}}</view>
+          <view class="title-style">{{hDetail.houseType.hopValue}}</view>
           <view class="text-gray text-sm flex justify-between">
             {{hDetail.hTime}}
           </view>
@@ -66,7 +67,8 @@
         <text class="title-font">提货地址: </text>{{hDetail.hAddress}}
       </view>
       <view class="grid flex-sub padding-lr col-3 grid-square">
-        <view class="bg-img" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);" wx:for="{{9}}" wx:key="{{index}}">
+        <view  wx:for="{{hDetail.hImg}}" wx:key="{{index}}" wx:for-item="imgUrl" wx:if="{{item.hImg!=''}}">
+          <image mode="aspectFill" class="bg-img" src="{{imgUrl}}"></image>
         </view>
       </view>
     </view>

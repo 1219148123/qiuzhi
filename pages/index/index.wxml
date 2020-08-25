@@ -1,9 +1,9 @@
 <view class="cu-custom" style="height:{{CustomBar}}px">
   <view class="cu-bar fixed none-bg text-white bg-img bg-orange padding-left" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
-    <view class="search-form round">
+    <!-- <view class="search-form round">
       <text class="cuIcon-search"></text>
       <input type="text" placeholder="搜索" confirm-type="search" bindinput="searchIcon"></input>
-    </view>
+    </view> -->
   </view>
 </view>
 <view class="display">
@@ -16,10 +16,6 @@
     </swiper>
   </view>
   <view class="function">
-    <navigator class="fun-box" url="/pages/applyForJob/applyForJob" hover-class="none">
-      <image src="../../images/display-qiuzhi.png" class="fun-img" ></image>
-      <text class="fun-font">我要求职</text>
-    </navigator>
     <navigator class="fun-box" url="/pages/recruitment/recruitment" hover-class="none">
       <image src="../../images/display-zhaoren.png" class="fun-img"></image>
       <text class="fun-font">我要招人</text>
@@ -30,7 +26,11 @@
     </navigator>
     <navigator class="fun-box" url="/pages/usedHourse/usedHourse" hover-class="none">
       <image src="../../images/display-xunrenqishi.png" class="fun-img"></image>
-      <text class="fun-font">二手房</text>
+      <text class="fun-font">房屋出售</text>
+    </navigator>
+    <navigator class="fun-box" url="/pages/investment/investment" hover-class="none">
+      <image src="../../images/display-qiuzhi.png" class="fun-img" ></image>
+      <text class="fun-font" decode="{{true}}">&nbsp;招商</text>
     </navigator>
   </view>
 </view>
@@ -44,4 +44,6 @@
     </block>
   </view>
 </view>
-<view class="div-bottom">———————  到底啦~~~  ——————</view>
+<view class="footer">
+  <view class="div-bottom">—— END ——</view>
+</view>

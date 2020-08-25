@@ -18,7 +18,7 @@
 	</view>
   <view class="cu-form-group">
 		<view class="title">薪资</view>
-		<input placeholder="例 : 150元/天 或 3000元/月" name="jobSalay"></input>
+		<input placeholder="例 : 150元/天或3000元/月或面谈" name="jobSalay"></input>
 	</view>
   <view class="cu-form-group">
 		<view class="title">工作类型</view>

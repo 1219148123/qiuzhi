@@ -99,13 +99,13 @@ Page({
     console.log('form发生了submit事件，携带数据为：', e.detail.value);
     let {carKilometre,carImg,carNowPrice,carType,carPeople,carPhone,carOriginalPrice} = e.detail.value;
     this.data.imgList.forEach(imgUrl => {
-      // console.log(imgUrl)
+      console.log(imgUrl)
       let imgData = {file:imgUrl}
       imgData = JSON.stringify(imgData)
       // var tempFilePaths = res.tempFilePaths[0]
        console.log("路径" + imgUrl);
       wx.uploadFile({
-        url: 'http://127.0.0.1:9797/secondeHandCar/carImgUpload',
+        url: 'http://47.103.4.57/secondeHandCar/carImgUpload',
          filePath: imgUrl,
          name: 'file',
          header: {
@@ -131,11 +131,11 @@ Page({
        warn: "预期价位为空！",
        isSubmit: true,
        errorModal:true,
-       errorMessage:"预期价位不能为空！"
+       errorMessage:"预期价位格式不正确！"
       })
       return;
      }
-    
+
     if (!carType) {
       this.setData({
        warn: "车辆类型为空！",
@@ -192,13 +192,12 @@ Page({
       wx.showToast({
         title: '提交成功',
       })
-      wx.navigateBack({
-        delta: 0,
-      })
 		},function(res){
 			console.log(res)//请求失败回调
     })
-    
+    wx.navigateBack({
+      delta: 1,
+    })
    },
    hideModal(e) {
     this.setData({

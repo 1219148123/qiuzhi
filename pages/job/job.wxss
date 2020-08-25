@@ -86,5 +86,14 @@ page{
   font-size:28rpx;
   margin-top: -6rpx;
 }
+.footer{
+  display: flex;
+  justify-content: center;
+  background-color: #F1F1F1;
+}
+.div-bottom{
+  margin:20rpx 0;
+  color: rgb(185, 182, 182);
+}
 
 

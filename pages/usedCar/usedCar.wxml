@@ -37,7 +37,7 @@
 
   <view class="cu-form-group margin-top">
 		<view class="title">预期价位</view>
-		<input placeholder="例 : 150元/天 或 3000元/月" name="carNowPrice"></input>
+		<input name="carNowPrice"></input>
 	</view>
   <view class="cu-form-group">
 		<view class="title">车辆类型</view>

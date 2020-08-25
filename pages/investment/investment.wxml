@@ -1,0 +1,48 @@
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+	<view slot="backText">返回</view>
+</cu-custom>
+<view class="header">
+  <view class="title">广告位招商</view>
+</view>
+<block wx:for="{{article.content}}">
+  <view class="cu-bar bg-white solid-bottom margin-top" wx:if="{{item.type == 'header'}}">
+    <view class='action'>
+      <text class='cuIcon-titles text-orange '></text> {{item.text}}
+    </view>
+  </view>
+  <view class="cu-card article no-card margin-bottom" wx:if="{{item.type == 'paragraph'}}">
+    <view class="cu-item shadow">
+      <view class="cell-item margin-top">
+        <text space="emsp" decode="{{true}}" class="p-style">{{item.text}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="cu-card article no-card margin-bottom" wx:if="{{item.type == 'image'}}">
+    <view class="cu-item shadow">
+      <view class="cell-item margin-top">
+        <view class="radius img-style">
+          <image src="{{cdnUrl}}/{{item.path}}"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-list menu card-menu margin-top-xl shadow-lg" wx:if="{{item.type == 'link'}}">
+    <navigator class="cu-item arrow" url="./Detail?url={{item.target}}">
+      <view class="content">
+        <text class="cuIcon-github text-grey"></text>
+        <text class="text-black">{{item.text}}</text>
+      </view>
+    </navigator>
+  </view>
+  <view class="cu-list menu card-menu margin-top-xl shadow-lg" wx:if="{{item.type == 'url'}}">
+    <view class="cu-item" bindtap="copyText" data-text="{{item.url}}">
+      <view class="content">
+        <text class="cuIcon-github text-grey"></text>
+        <text class="text-black">{{item.text}}</text>
+      </view>
+    </view>
+  </view>
+</block>
+<view class="footer">
+  <view>— END —</view>
+</view>

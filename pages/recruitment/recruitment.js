@@ -104,9 +104,6 @@ Page({
     })
   },
   formSubmit: function (e) {
-    wx.showToast({
-      title: '提交成功',
-    })
     console.log('form发生了submit事件，携带数据为：', e.detail.value);
     let { jobContent,jobNeed,jobSalay,jobType,jobPeople,jobPhone,jobAddress,jobPeriod, } = e.detail.value;
     if (!jobContent) {
@@ -130,13 +127,13 @@ Page({
       return;
      }
     
-    if (!jobSalay||!(/^[1-9]\d*元\/天|[1-9]\d*元\/月$/.test(jobSalay))) {
+    if (!jobSalay||!(/^[1-9]\d*元\/天|[1-9]\d*元\/月|面谈$/.test(jobSalay))) {
       this.setData({
        jobSalayFocus:true,
        warn: "薪资为空！",
        isSubmit: true,
        errorModal:true,
-       errorMessage:"薪资不能为空！"
+       errorMessage:"薪资格式不正确！"
       })
       return;
     }
@@ -204,8 +201,11 @@ Page({
     data = JSON.stringify(data)
     req.requestAjax('recruit/insert','POST',data,'正在加载',(res)=>{
       console.log(res)//请求成功回调
+      wx.showToast({
+        title: '提交成功',
+      })
       wx.navigateBack({
-        delta: 0,
+        delta: 1,
       })
 		},function(res){
 			console.log(res)//请求失败回调
@@ -216,6 +216,7 @@ Page({
     this.setData({
       errorModal: false
     })
+    
   },
   onShow(){
     req.requestAjax('type/workType','Get','{}','正在加载',(res)=>{

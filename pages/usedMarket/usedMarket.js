@@ -11,6 +11,7 @@ Page({
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
     tarbarList:['二手车','二手房'],
+    // imgList:[],
     carMarketList:[],
     houseMarketList:[]
   },
@@ -24,12 +25,21 @@ Page({
   onShow(){
     req.requestAjax('secondeHandCar/list','GET','{}','正在加载',(res)=>{
       console.log(res)//请求成功回调
+      res.forEach(carInfo => {
+        carInfo.carImg = carInfo.carImg.split(',')
+      })
+      console.log(res)
       this.setData({
         carMarketList:res
       })
+      // this.data.carMarketList.forEach(carInfo => {
+      //   carInfo.carImg = carInfo.carImg.split(',')
+      // })
+      console.log(this.data.carMarketList)
 		},function(res){
 			console.log(res)//请求失败回调
     })
+    
   },
   tabSelect(e) {
     this.setData({
@@ -40,10 +50,15 @@ Page({
     if(this.data.TabCur==1){
       req.requestAjax('house/list','GET','{}','正在加载',(res)=>{
         console.log(res)//请求成功回调
+        res=res.reverse()
+        res.forEach(hInfo => {
+          hInfo.hImg = hInfo.hImg.split(',')
+        })
         this.setData({
           carMarketList:[],
           houseMarketList:res
         })
+        
       },function(res){
         console.log(res)//请求失败回调
       })
@@ -51,6 +66,9 @@ Page({
 
       req.requestAjax('secondeHandCar/list','GET','{}','正在加载',(res)=>{
         console.log(res)//请求成功回调
+        res.forEach(carInfo => {
+          carInfo.carImg = carInfo.carImg.split(',')
+        })
         this.setData({
           houseMarketList:[],
           carMarketList:res

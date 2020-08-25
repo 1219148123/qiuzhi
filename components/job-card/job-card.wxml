@@ -5,7 +5,7 @@
     <view class="jobTime-font">{{job.zTime}}</view>
     <view class="jobAd-font">{{job.zWorkAddress}}</view>
   </view>
-  <view>
+  <view class="flex-style">
     <view class="job-salary">{{job.zWorkSalary}}</view>
     <view class="job-ad">{{job.workType.workTypeValue}}</view>
   </view>

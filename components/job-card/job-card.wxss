@@ -10,11 +10,17 @@
   font-size: 40rpx;
   font-weight: 700;
 }
+.flex-style{
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+}
 .job-ad{
-  /* width: 70rpx; */
+  width: fit-content;
+  padding: 0 20rpx;
   height: 40rpx;
   background-color: #FC9A4E;
-  border-radius: 5rpx;
+  border-radius: 8rpx;
   text-align: center;
   display: flex;
   flex-direction: column;
