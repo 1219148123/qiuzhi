@@ -87,9 +87,6 @@ Page({
     })
   },
   formSubmit: function (e) {
-    wx.showToast({
-      title: '提交成功',
-    })
     console.log('form发生了submit事件，携带数据为：', e.detail.value);
     let {hContent,hImg,hMoney,hType,hPeople,hPhone,hAddress} = e.detail.value;
     if (!hContent) {
@@ -120,15 +117,6 @@ Page({
       })
       return;
      }
-    if (!hPeople) {
-      this.setData({
-       warn: "联系人为空！",
-       isSubmit: true,
-       errorModal:true,
-       errorMessage:"联系人不能为空！"
-      })
-      return;
-    }
     if (!hPhone||!(/^1[3456789]\d{9}$/.test(hPhone))) {
       this.setData({
        warn: "手机号码为空！",
@@ -172,6 +160,7 @@ Page({
       hImg,
       hMoney,
       hPeople,
+      hPhone,
       hStatus:1,
       hTime:"",
       hType: parseInt(hType)+1

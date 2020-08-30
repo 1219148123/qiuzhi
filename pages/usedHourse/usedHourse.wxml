@@ -82,7 +82,6 @@
     <button class="cu-btn bg-orange lg round" form-type="submit">提交信息</button>
   </view>
 	<view wx:if="{{isSubmit}}">
- 	{{"工作内容："+jobContent+"岗位要求："+jobNeed+"，薪资："+jobSalay+"，工作类型："+jobType+"，邮件："+jobEmail+"，手机号码："+jobPhone+"，工作地址："+jobAddress+"，工作时间："+jobTime}}
 	</view>
 </form>
 <view class="cu-modal {{errorModal?'show':''}}">
