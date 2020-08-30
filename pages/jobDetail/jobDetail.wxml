@@ -6,7 +6,7 @@
     </view>
     <view class="job-desc">
       <view class="job-title">{{jobdetail.zWorkContent}}</view>
-      <view class="job-salary">{{jobdetail.zWorkSalary}}元/天</view>
+      <view class="job-salary">{{jobdetail.zWorkSalary}}</view>
       <view class="job-address">{{jobdetail.workType.workTypeValue}}</view>
     </view>
   </view>

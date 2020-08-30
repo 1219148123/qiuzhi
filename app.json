@@ -39,7 +39,7 @@
         "selectedIconPath": "images/talent-A.png"
       },
       {
-        "pagePath": "pages/my/my",
+        "pagePath": "pages/investment/investment",
         "text": "我的",
         "iconPath": "images/my.png",
         "selectedIconPath": "images/my-A.png"

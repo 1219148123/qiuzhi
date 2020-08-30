@@ -101,6 +101,13 @@ Page({
   onShow() {
     this.towerSwiper('swiperList');
     // 初始化towerSwiper 传已有的数组名即可
+    this.updateJobList()
+  },
+  onPullDownRefresh: function() {
+    this.updateJobList()
+    wx.stopPullDownRefresh()
+  },
+  updateJobList(){
     req.requestAjax('recruit/list','GET','{}','正在加载',(res)=>{
       console.log(res)//请求成功回调
       res=res.reverse()

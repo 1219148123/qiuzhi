@@ -21,11 +21,11 @@
       <text class="fun-font">我要招人</text>
     </navigator>
     <navigator class="fun-box" url="/pages/usedCar/usedCar" hover-class="none">
-      <image src="../../images/display-shiwuzhaoling.png"class="fun-img" ></image>
+      <image src="../../images/secondMarket.png"class="fun-img" ></image>
       <text class="fun-font">二手车</text>
     </navigator>
     <navigator class="fun-box" url="/pages/usedHourse/usedHourse" hover-class="none">
-      <image src="../../images/display-xunrenqishi.png" class="fun-img"></image>
+      <image src="../../images/houseForSale.png" class="fun-img"></image>
       <text class="fun-font">房屋出售</text>
     </navigator>
     <navigator class="fun-box" url="/pages/investment/investment" hover-class="none">

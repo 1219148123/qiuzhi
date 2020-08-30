@@ -14,6 +14,14 @@ Page({
     tab:[true],
     jobList:[]
   },
+
+  goJobContent(e){
+    console.log(e);
+    wx.navigateTo({
+      url: `../../pages/jobDetail/jobDetail?jobid=${e.currentTarget.dataset.jobid}`,
+    })
+  },
+
   // onReady: function() {
   //   //初始化数据
   //   var self=this;
@@ -89,14 +97,8 @@ getData(e){
 			console.log(res)//请求失败回调
     })
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onShow: function (options) {
-    let data = {workId:1}
-    data = JSON.stringify(data)
-    req.requestAjax('recruit/list','GET',data,'正在加载',(res)=>{
+  updateJobList(){
+    req.requestAjax('recruit/list','GET',"{}",'正在加载',(res)=>{
       console.log(res)//请求成功回调
       res = res.reverse()
       this.setData({
@@ -113,6 +115,13 @@ getData(e){
     },function(res){
       console.log(res)//请求失败回调
     })
-    
+  },
+  onPullDownRefresh: function() {
+    this.updateJobList()
+    wx.stopPullDownRefresh()
+  },
+
+  onLoad: function (options) {
+    this.updateJobList()
   }
 })

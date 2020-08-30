@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "x-job-card":"/components/job-card/job-card"
-  }
+  },
+  "enablePullDownRefresh": true
 }

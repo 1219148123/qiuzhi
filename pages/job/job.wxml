@@ -25,7 +25,7 @@
 <view class="w">
     <!--结果-->
     <block wx:for="{{jobList}}"  wx:key="zId" >
-        <x-job-card job="{{item}}" data-jobId="{{item.zId}}" bindtap="goJobContent"/>
+        <x-job-card job="{{item}}" data-jobId="{{item.zId}}" bindtap="goJobContent" />
     </block>
 </view>
 <view class="footer">

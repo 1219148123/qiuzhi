@@ -92,38 +92,12 @@ getData(e){
   /**
    * 生命周期函数--监听页面加载
    */
-  // onLoad: function (options) {
-
-  // },
   onLoad(){
-    req.requestAjax('secondeHandCar/list','GET','{}','正在加载',(res)=>{
-      console.log(res)//请求成功回调
-      res=res.reverse()
-      res.forEach(carInfo => {
-        carInfo.carImg = carInfo.carImg.split(',')
-      })
-      console.log(res)
-      this.setData({
-        carMarketList:res
-      })
-      // this.data.carMarketList.forEach(carInfo => {
-      //   carInfo.carImg = carInfo.carImg.split(',')
-      // })
-      console.log(this.data.carMarketList)
-		},function(res){
-			console.log(res)//请求失败回调
-    })
-
-    // cartype
-    req.requestAjax('type/carType','Get','{}','正在加载',(res)=>{
-      console.log(res)//请求成功回调
-      this.setData({
-        typePicker:res
-      })
-    },function(res){
-      console.log(res)//请求失败回调
-    })
-    
+    this.updateMarketList() 
+  },
+  onPullDownRefresh: function() {
+    this.updateMarketList()
+    wx.stopPullDownRefresh()
   },
   tabSelect(e) {
     this.setData({
@@ -131,6 +105,23 @@ getData(e){
       scrollLeft: (e.currentTarget.dataset.id-1)*60
     })
     console.log(this.data.TabCur)
+    this.updateMarketList()
+  },
+  goUsedDetail(e){
+    console.log(e)
+    if(this.data.TabCur==0){
+      wx.navigateTo({
+        url: '/pages/usedDetail/usedDetail?carId='+e.currentTarget.dataset.carid,
+      })
+    }
+    if(this.data.TabCur==1){
+      wx.navigateTo({
+        url: '/pages/usedDetail/usedDetail?hId='+e.currentTarget.dataset.hid,
+      })
+    }
+  },
+
+  updateMarketList(){
     if(this.data.TabCur==1){
       req.requestAjax('house/list','GET','{}','正在加载',(res)=>{
         console.log(res)//请求成功回调
@@ -141,12 +132,10 @@ getData(e){
         this.setData({
           carMarketList:[],
           houseMarketList:res
-        })
-        
+        }) 
       },function(res){
         console.log(res)//请求失败回调
       })
-
       // housetype
       req.requestAjax('type/houseType','Get','{}','正在加载',(res)=>{
         console.log(res)//请求成功回调
@@ -157,9 +146,9 @@ getData(e){
         console.log(res)//请求失败回调
       })
     }else{
-
       req.requestAjax('secondeHandCar/list','GET','{}','正在加载',(res)=>{
         console.log(res)//请求成功回调
+        res=res.reverse()
         res.forEach(carInfo => {
           carInfo.carImg = carInfo.carImg.split(',')
         })
@@ -182,17 +171,4 @@ getData(e){
     })
     }
   },
-  goUsedDetail(e){
-    console.log(e)
-    if(this.data.TabCur==0){
-      wx.navigateTo({
-        url: '/pages/usedDetail/usedDetail?carId='+e.currentTarget.dataset.carid,
-      })
-    }
-    if(this.data.TabCur==1){
-      wx.navigateTo({
-        url: '/pages/usedDetail/usedDetail?hId='+e.currentTarget.dataset.hid,
-      })
-    }
-  }
 })
