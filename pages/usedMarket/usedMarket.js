@@ -25,6 +25,7 @@ Page({
   onShow(){
     req.requestAjax('secondeHandCar/list','GET','{}','正在加载',(res)=>{
       console.log(res)//请求成功回调
+      res=res.reverse()
       res.forEach(carInfo => {
         carInfo.carImg = carInfo.carImg.split(',')
       })
