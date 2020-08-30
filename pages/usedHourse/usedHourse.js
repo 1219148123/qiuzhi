@@ -154,7 +154,7 @@ Page({
       // var tempFilePaths = res.tempFilePaths[0]
        console.log("路径" + imgUrl);
       wx.uploadFile({
-        url: 'http://127.0.0.1:9797/house/houseImgUpload',
+        url: 'http://47.103.4.57:9797/house/houseImgUpload',
          filePath: imgUrl,
          name: 'file',
          header: {

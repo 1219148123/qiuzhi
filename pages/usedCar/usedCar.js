@@ -105,7 +105,7 @@ Page({
       // var tempFilePaths = res.tempFilePaths[0]
        console.log("路径" + imgUrl);
       wx.uploadFile({
-        url: 'http://47.103.4.57/secondeHandCar/carImgUpload',
+        url: 'http://47.103.4.57:9797/secondeHandCar/carImgUpload',
          filePath: imgUrl,
          name: 'file',
          header: {
