@@ -6,7 +6,7 @@
       <text>{{item}}</text>
       <image src="/images/arrow.png"></image>
       </view>
-    </view>
+    </view> 
   </view>
 </view>
 

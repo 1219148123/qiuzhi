@@ -6,7 +6,44 @@
       </view>
     </scroll-view>
   </view>
+  
 </view>
+<!-- <view class="cu-bar fixed none-bg text-orange bg-img bg-white" style="height:50rpx;margin-top:{{StatusBar+28}}px;">
+    <view class="tabTit box tc bg_f fixed">
+      <view class="flex1{{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="" data-index="{{index}}" bindtap="filterTab">
+      <text>{{item}}</text>
+      <image src="/images/arrow.png"></image>
+    </view>
+  </view>
+</view> -->
+<view class="fixed typePicker">
+    <view class="tabTit box tc bg_f fixed">
+      <view class="flex1{{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="" data-index="{{index}}" bindtap="filterTab">
+      <text>{{item}}</text>
+      <image src="/images/arrow.png"></image>
+    </view>
+  </view>
+</view>
+  <!-- <view class="tabTit box tc bg_f fixed">
+    <view class="flex1{{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="" data-index="{{index}}" bindtap="filterTab">
+    <text>{{item}}</text>
+    <image src="/images/arrow.png"></image>
+    </view>
+  </view> -->
+
+<!--筛选项--> 
+<view class="tabLayer tc" hidden="{{tab[0]}}" style="top:{{CustomBar+20}}px" wx:if="{{TabCur==0}}">
+  <block wx:for="{{typePicker}}">
+    <text class="{{house_type==0?'active':''}}" data-id="{{item.carTypeId}}" data-index="{{index}}" data-txt="类型" bindtap="filter">{{item.carTypeValue}}</text>
+  </block>
+</view> 
+<view class="tabLayer tc" hidden="{{tab[0]}}" style="top:{{CustomBar+20}}px" wx:if="{{TabCur==1}}">
+  <block wx:for="{{typePicker}}">
+    <text class="{{house_type==0?'active':''}}" data-id="{{item.houId}}" data-index="{{index}}" data-txt="类型" bindtap="filter">{{item.hopValue}}</text>
+  </block>
+</view> 
+
+<view class="blank"></view>
 
 <block wx:if="{{TabCur==0}}">
   <block wx:for="{{carMarketList}}">

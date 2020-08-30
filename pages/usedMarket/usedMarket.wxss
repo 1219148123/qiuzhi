@@ -20,6 +20,69 @@
   flex-direction: column;
   justify-content: center;
 }
+.tabTit{
+  height:50rpx;
+  line-height: 50rpx;
+  width: 750rpx;
+  z-index: 1;
+  background-color: #fff;
+  padding-left: 37rpx;
+  font-size: 30rpx;
+  font-weight: bolder;
+  color:#FCA059;
+  border-bottom: 2rpx solid #ccc;
+}
+.typePicker{
+  position: fixed;
+  background-color: #fff;
+  z-index: 999;
+}
+/* #FC9A4E; border-radius: 10rpx;color: #fff; */
+.tabTit .active{
+  color:#FCA059;
+  background: #fff;
+}
+.tabTit .active image{
+  transform: rotate(180deg);
+  background: none;
+}
+.tabTit image{
+  width:26rpx;
+  height:26rpx;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+.tabLayer{
+  box-shadow: 0 5px 5px rgba(0,0,0,.15);
+  width:750rpx;
+  overflow: hidden;
+  position: fixed;
+  /* top:90rpx; */
+  z-index: 1000;
+  background: #fff; 
+  padding-bottom: 26rpx;
+  border-bottom: solid 1px rgb(228, 227, 227);
+}
+.tabLayer text{
+  width:210rpx;
+  height:60rpx;
+  line-height:60rpx;
+  float:left;
+  border: solid 1px #FC9A4E;
+  margin:20rpx 0 0 26rpx;
+  color: #fff;
+  border-radius: 20rpx;
+  align-items: center;
+  text-align: center;
+  background-color: #FC9A4E;
+}
+.tabLayer .active{
+  color:#FC9A4E;
+  border-color:#FC9A4E;
+}
+.blank{
+  height: 50rpx;
+}
 .footer{
   display: flex;
   justify-content: center;
